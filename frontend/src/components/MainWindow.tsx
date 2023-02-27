@@ -1,7 +1,16 @@
+import axios from "axios";
+
 const MainWindow = () => {
-    return (
-        <div className="bg-[#11112d] rounded-3xl w-[88vw] h-[95vh]">See What's Trending</div>
-    )
-}
+  const handleLogin = async () => {
+    axios.post("https://localhost:7070/login");
+  };
+
+  return (
+    <div className="bg-main-window bg-cover w-full h-full">
+      See What's Trending
+      <button >Log in with Spotify</button>
+    </div>
+  );
+};
 
 export default MainWindow;

@@ -21,7 +21,7 @@ public class TrackController : ControllerBase
     [ProducesResponseType(typeof(Track), StatusCodes.Status200OK)]
     public async Task<OkObjectResult> Get([FromQuery(Name = "id")] string id)
     {
-        var user = await _client.UserProfile.Current();
+        // var user = await _client.UserProfile.Current();
         var track = await _client.Tracks.Get(id);
         
         return Ok(new Track
