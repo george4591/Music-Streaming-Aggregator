@@ -1,4 +1,6 @@
 import axios from "axios";
+import Library from "./Library";
+import Player from "./Player";
 
 const MainWindow = () => {
   const handleLogin = async () => {
@@ -6,9 +8,9 @@ const MainWindow = () => {
   };
 
   return (
-    <div className="bg-main-window bg-cover w-full h-full">
-      See What's Trending
-      <button >Log in with Spotify</button>
+    <div className="w-[85%] mx-auto bg-cover h-[95%] relative">
+      <Library />
+      <Player />
     </div>
   );
 };

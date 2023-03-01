@@ -1,0 +1,9 @@
+/* For Firefox */
+progress::-moz-progress-bar {
+    background: white;
+}
+
+/* For Chrome or Safari */
+progress::-webkit-progress-value {
+    background: white;
+}

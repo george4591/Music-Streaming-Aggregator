@@ -1,9 +1,7 @@
-import { useState } from "react";
 import Menu from "./components/Menu";
 import MainWindow from "./components/MainWindow";
 import Callback from "./components/Callback";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Player from "./components/Player";
 
 function App() {
   return (
@@ -14,11 +12,10 @@ function App() {
             path="/"
             element={
               <>
-                <div className="h-[95%] bg-main-color font-semibold flex justify-around items-center">
+                <div className="h-[100%] bg-main-window-5 bg-cover font-semibold flex justify-around items-center">
                   <Menu />
                   <MainWindow />
                 </div>
-                <Player />
               </>
             }
           />
