@@ -11,12 +11,10 @@ function App() {
           <Route
             path="/"
             element={
-              <>
-                <div className="h-[100%] bg-main-window-5 bg-cover font-semibold flex justify-around items-center">
-                  <Menu />
-                  <MainWindow />
-                </div>
-              </>
+              <div className="h-[100%] bg-main-window-5 bg-cover font-semibold flex justify-around items-center">
+                <Menu />
+                <MainWindow />
+              </div>
             }
           />
           <Route path="/callback" element={<Callback />} />

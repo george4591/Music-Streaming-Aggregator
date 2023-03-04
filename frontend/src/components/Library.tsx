@@ -42,7 +42,7 @@ const Library = () => {
                 key={index}
                 className="relative w-full py-4 px-2 cursor-pointer flex hover:bg-gray-500 hover:bg-opacity-10"
               >
-                <img src={coverExampleImg} alt="" width="35px" />
+                <img src={coverExampleImg} alt="" width="44px" />
                 <div className="relative ml-2 flex flex-col justify-center">
                   <p className="text-base">{item.text}</p>
                   <p className="text-gray-400 text-sm">32 Tracks</p>
@@ -64,7 +64,7 @@ const Library = () => {
                 key={index}
                 className="relative w-full py-4 px-2 cursor-pointer flex hover:bg-gray-500 hover:bg-opacity-10"
               >
-                <img src={trackExampleImg} alt="" width="35px" />
+                <img src={trackExampleImg} alt="" width="44px" />
                 <div className="relative ml-2 flex flex-col justify-center">
                   <p className="text-base">{item.title}</p>
                   <p className="text-gray-400 text-sm">{item.Artist}</p>
@@ -86,7 +86,7 @@ const Library = () => {
                 key={index}
                 className="relative w-full py-4 px-2 cursor-pointer flex hover:bg-gray-500 hover:bg-opacity-10"
               >
-                <img src={similarExampleImg} alt="" width="35px" />
+                <img src={similarExampleImg} alt="" width="44px" />
                 <div className="relative ml-2 flex flex-col justify-center">
                   <p className="text-base">{item.title}</p>
                   <p className="text-gray-400 text-sm">{item.Artist}</p>
