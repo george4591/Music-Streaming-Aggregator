@@ -19,7 +19,7 @@ const PlaybackControls = () => {
   return (
     <div>
       <ProgressBar />
-      <div className="relative flex justify-center">
+      <div className="mt-3 relative flex justify-center">
         <IconsGroup
           icons={ShuffleIcons}
           className="w-28 flex absolute left-0 self-center items-center justify-between"
