@@ -1,11 +1,11 @@
 frontend/node_modules
 .vscode/*
 
-**/HELP.md
-**/target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+backend/HELP.md
+backend/target/
+backend/.mvn/
+backend/src/main/**/target/
+backend/src/test/**/target/
 
 ### STS ###
 **/.apt_generated
@@ -21,13 +21,3 @@ frontend/node_modules
 **/*.iws
 **/*.iml
 **/*.ipr
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
