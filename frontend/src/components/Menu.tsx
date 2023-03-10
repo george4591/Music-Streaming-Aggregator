@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import { IconType } from "../types/IconType";
+import { IconType } from "../types/PropTypes";
 import IconsList from "./IconsList";
 
 const Menu = () => {

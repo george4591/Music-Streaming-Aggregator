@@ -1,4 +1,4 @@
-import { IconType } from "../types/IconType";
+import { IconType } from "../types/PropTypes";
 import ProgressBar from "./ProgressBar";
 import VolumeBar from "./VolumeBar";
 import IconsGroup from "./IconsGroup";
