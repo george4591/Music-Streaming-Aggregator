@@ -13,18 +13,17 @@ import java.net.URI;
 @Service
 public class SpotifyClient {
     private static SpotifyApi spotifyApi = null;
-    private static SpotifyConfig config;
 
-    private SpotifyClient(SpotifyConfig spotifyConfig) {
-        config = spotifyConfig;
+    private SpotifyClient() {
+
     }
 
     public static SpotifyApi getInstance() {
         if (spotifyApi == null) {
             spotifyApi = new SpotifyApi.Builder()
-                    .setClientId(config.getClientId())
-                    .setClientSecret(config.getClientSecret())
-                    .setRedirectUri(URI.create(config.getRedirectUrl()))
+                    .setClientId(SpotifyConfig.clientId)
+                    .setClientSecret(SpotifyConfig.clientSecret)
+                    .setRedirectUri(URI.create(SpotifyConfig.redirectUrl))
                     .build();
 
             ClientCredentialsRequest clientCredentialsRequest = spotifyApi.clientCredentials()

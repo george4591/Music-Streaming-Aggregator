@@ -1,36 +1,8 @@
 package com.musicaggregator;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
-
-@Configuration
-@ConfigurationProperties(prefix = "spotify")
 public class SpotifyConfig {
-    private String clientId;
-    private String clientSecret;
-    private String redirectUrl;
+    public static final String clientId = System.getenv("SPOTIFY_CLIENT_ID");
 
-    public String getClientId() {
-        return clientId;
-    }
-
-    public String getRedirectUrl() {
-        return redirectUrl;
-    }
-
-    public String getClientSecret() {
-        return clientSecret;
-    }
-
-    public void setClientId(String clientId) {
-        this.clientId = clientId;
-    }
-
-    public void setClientSecret(String clientSecret) {
-        this.clientSecret = clientSecret;
-    }
-
-    public void setRedirectUrl(String redirectUrl) {
-        this.redirectUrl = redirectUrl;
-    }
+    public static final String clientSecret =  System.getenv("SPOTIFY_CLIENT_SECRET");
+    public static final String redirectUrl = System.getenv("SPOTIFY_REDIRECT_URL");
 }

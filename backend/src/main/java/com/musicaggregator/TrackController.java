@@ -1,9 +1,9 @@
 package com.musicaggregator;
 
 import org.apache.hc.core5.http.ParseException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -23,9 +23,9 @@ public class TrackController {
     }
 
     @GetMapping
-    public Track getOne() {
+    public Track getOne(@RequestParam("id") String id) {
         try {
-            GetTrackRequest getTrackRequest = spotifyApi.getTrack("1Ezn3sh9v9mhhyLYaIGHWC").build();
+            GetTrackRequest getTrackRequest = spotifyApi.getTrack(id).build();
             return getTrackRequest.execute();
         } catch (IOException | SpotifyWebApiException | ParseException e) {
             throw new RuntimeException(e);
