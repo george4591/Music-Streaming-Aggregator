@@ -1,7 +1,0 @@
-server:
-  port: 7070
-
-spotify:
-  client-id: "1d6a111ca15a48a5a5b1f0364147756f"
-  client-secret: "8be78aee41254eef8332c6605344a4cb"
-  redirect-url: "https://localhost:7070/callback"
