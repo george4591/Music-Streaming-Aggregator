@@ -12,7 +12,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class TrackControllerTest {
-    private final TrackDTOMapper trackDTOMapper = new TrackDTOMapper();
     @InjectMocks
     private TrackController trackController;
 
