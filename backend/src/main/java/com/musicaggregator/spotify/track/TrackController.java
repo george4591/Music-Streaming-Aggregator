@@ -16,7 +16,7 @@ public class TrackController {
     }
 
     @GetMapping
-    public TrackDTO getOne(@RequestParam("id") String id) {
+    public TrackDTO getTrack(@RequestParam("id") String id) {
         return trackService.getTrack(id);
     }
 }
