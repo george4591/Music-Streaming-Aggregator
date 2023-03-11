@@ -63,7 +63,7 @@ java -jar target/backend-0.0.1-SNAPSHOT.jar
 ```bash
 npm run dev
 ```
-3. Access the application at http://localhost:5148
+3. Access the application at http://localhost:5173 
 
 # License
 
