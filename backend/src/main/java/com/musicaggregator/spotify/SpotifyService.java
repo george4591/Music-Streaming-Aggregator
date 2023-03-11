@@ -1,4 +1,4 @@
-package com.musicaggregator;
+package com.musicaggregator.spotify;
 
 import org.apache.hc.core5.http.ParseException;
 import org.springframework.stereotype.Service;
@@ -11,10 +11,10 @@ import java.io.IOException;
 import java.net.URI;
 
 @Service
-public class SpotifyClient {
+public class SpotifyService {
     private static SpotifyApi spotifyApi = null;
 
-    private SpotifyClient() {
+    private SpotifyService() {
 
     }
 
@@ -26,8 +26,7 @@ public class SpotifyClient {
                     .setRedirectUri(URI.create(SpotifyConfig.redirectUrl))
                     .build();
 
-            ClientCredentialsRequest clientCredentialsRequest = spotifyApi.clientCredentials()
-                    .build();
+            ClientCredentialsRequest clientCredentialsRequest = spotifyApi.clientCredentials().build();
 
             ClientCredentials clientCredentials;
             try {

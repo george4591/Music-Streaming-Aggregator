@@ -1,4 +1,4 @@
-package com.musicaggregator;
+package com.musicaggregator.spotify;
 
 public class SpotifyConfig {
     public static final String clientId = System.getenv("SPOTIFY_CLIENT_ID");
