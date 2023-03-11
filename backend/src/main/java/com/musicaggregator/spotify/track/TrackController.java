@@ -1,10 +1,12 @@
 package com.musicaggregator.spotify.track;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+/**
+ * REST controller for managing track information.
+ */
 @RestController
 @RequestMapping("/api/v1/tracks")
 public class TrackController {
@@ -15,8 +17,25 @@ public class TrackController {
         trackService = new TrackService();
     }
 
-    @GetMapping
-    public TrackDTO getTrack(@RequestParam("id") String id) {
+    /**
+     * Retrieves information about the track with the specified ID from Spotify.
+     *
+     * @param id The ID of the track to retrieve.
+     * @return The TrackDTO object representing the retrieved track information.
+     */
+    @GetMapping("{id}")
+    public TrackDTO getTrack(@PathVariable String id) {
         return trackService.getTrack(id);
+    }
+
+    /**
+     * Retrieves information about several tracks with the specified IDs from Spotify.
+     *
+     * @param ids An array of track IDs to retrieve.
+     * @return A list of TrackDTO objects representing the retrieved track information.
+     */
+    @GetMapping()
+    public List<TrackDTO> getSeveralTracks(@RequestParam String[] ids) {
+        return trackService.getSeveralTracks(ids);
     }
 }
