@@ -1,5 +1,6 @@
 package com.musicaggregator.spotify.track;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,8 +14,9 @@ public class TrackController {
 
     private final TrackService trackService;
 
-    public TrackController() {
-        trackService = new TrackService();
+    @Autowired
+    public TrackController(TrackService trackService) {
+        this.trackService = trackService;
     }
 
     /**

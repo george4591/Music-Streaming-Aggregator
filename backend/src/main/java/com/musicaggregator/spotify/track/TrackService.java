@@ -2,8 +2,8 @@ package com.musicaggregator.spotify.track;
 
 import com.musicaggregator.spotify.SpotifyService;
 import org.apache.hc.core5.http.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 import se.michaelthelin.spotify.requests.data.tracks.GetSeveralTracksRequest;
@@ -18,12 +18,13 @@ import java.util.stream.Collectors;
  */
 @Service
 public class TrackService {
-    private final SpotifyApi spotifyService;
+    private final SpotifyService spotifyService;
     private final TrackDTOMapper trackDTOMapper;
 
-    public TrackService() {
-        spotifyService = SpotifyService.getInstance();
-        trackDTOMapper = new TrackDTOMapper();
+    @Autowired
+    public TrackService(SpotifyService spotifyService, TrackDTOMapper trackDTOMapper) {
+        this.spotifyService = spotifyService;
+        this.trackDTOMapper = trackDTOMapper;
     }
 
     /**
@@ -33,7 +34,7 @@ public class TrackService {
      * @return The {@code TrackDTO} object representing the retrieved track information or {@code null} if there is an error.
      */
     public TrackDTO getTrack(String id) {
-        GetTrackRequest getTrackRequest = spotifyService.getTrack(id).build();
+        GetTrackRequest getTrackRequest = spotifyService.api.getTrack(id).build();
         try {
             Track track = getTrackRequest.execute();
             return trackDTOMapper.apply(track);
@@ -50,7 +51,7 @@ public class TrackService {
      * @throws RuntimeException If there is an error retrieving the track information from Spotify.
      */
     public List<TrackDTO> getSeveralTracks(String[] ids) {
-        GetSeveralTracksRequest getSeveralTracksRequest = spotifyService.getSeveralTracks(ids).build();
+        GetSeveralTracksRequest getSeveralTracksRequest = spotifyService.api.getSeveralTracks(ids).build();
         try {
             List<Track> tracks = List.of(getSeveralTracksRequest.execute());
             return tracks.stream().map(trackDTOMapper).collect(Collectors.toList());

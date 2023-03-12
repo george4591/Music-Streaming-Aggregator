@@ -2,6 +2,7 @@ package com.musicaggregator.spotify.audiofeatures;
 
 import com.musicaggregator.spotify.SpotifyService;
 import org.apache.hc.core5.http.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
@@ -18,12 +19,13 @@ import java.util.stream.Collectors;
  */
 @Service
 public class AudioFeaturesService {
-    private final SpotifyApi spotifyService;
+    private final SpotifyService spotifyService;
     private final AudioFeaturesDTOMapper audioFeaturesDTOMapper;
 
-    public AudioFeaturesService() {
-        spotifyService = SpotifyService.getInstance();
-        audioFeaturesDTOMapper = new AudioFeaturesDTOMapper();
+    @Autowired
+    public AudioFeaturesService(SpotifyService spotifyService, AudioFeaturesDTOMapper audioFeaturesDTOMapper) {
+        this.spotifyService = spotifyService;
+        this.audioFeaturesDTOMapper = audioFeaturesDTOMapper;
     }
 
     /**
@@ -34,7 +36,8 @@ public class AudioFeaturesService {
      * @throws RuntimeException If there is an error retrieving the audio features information from Spotify.
      */
     public AudioFeaturesDTO getTrackAudioFeatures(String id) {
-        GetAudioFeaturesForTrackRequest getAudioFeaturesRequest = spotifyService.getAudioFeaturesForTrack(id).build();
+        GetAudioFeaturesForTrackRequest getAudioFeaturesRequest = spotifyService.api.getAudioFeaturesForTrack(id)
+                                                                                    .build();
         try {
             AudioFeatures audioFeatures = getAudioFeaturesRequest.execute();
             return audioFeaturesDTOMapper.apply(audioFeatures);
@@ -51,7 +54,8 @@ public class AudioFeaturesService {
      * @throws RuntimeException If there is an error retrieving the audio features information from Spotify.
      */
     public List<AudioFeaturesDTO> getAudioFeaturesForSeveralTracks(String[] ids) {
-        GetAudioFeaturesForSeveralTracksRequest getAudioFeaturesRequest = spotifyService.getAudioFeaturesForSeveralTracks(ids).build();
+        GetAudioFeaturesForSeveralTracksRequest getAudioFeaturesRequest =
+                spotifyService.api.getAudioFeaturesForSeveralTracks(ids).build();
         try {
             List<AudioFeatures> features = List.of(getAudioFeaturesRequest.execute());
             return features.stream().map(audioFeaturesDTOMapper).collect(Collectors.toList());
