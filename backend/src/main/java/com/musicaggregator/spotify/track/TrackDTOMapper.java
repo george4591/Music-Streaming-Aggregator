@@ -6,7 +6,6 @@ import se.michaelthelin.spotify.model_objects.specification.Track;
 
 import java.util.Arrays;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /**
  * Mapper for converting Track objects to TrackDTO objects.
@@ -40,7 +39,7 @@ public class TrackDTOMapper implements Function<Track, TrackDTO> {
                               artist.getId(),
                               artist.getHref(),
                               artist.getUri()))
-                      .collect(Collectors.toList()),
+                      .toList(),
                 track.getUri(),
                 track.getPopularity(),
                 track.getDurationMs()

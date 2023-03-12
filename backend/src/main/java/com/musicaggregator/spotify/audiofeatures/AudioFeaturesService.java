@@ -4,7 +4,6 @@ import com.musicaggregator.spotify.SpotifyService;
 import org.apache.hc.core5.http.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 import se.michaelthelin.spotify.model_objects.specification.AudioFeatures;
 import se.michaelthelin.spotify.requests.data.tracks.GetAudioFeaturesForSeveralTracksRequest;
@@ -12,7 +11,6 @@ import se.michaelthelin.spotify.requests.data.tracks.GetAudioFeaturesForTrackReq
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * A service class that provides methods for retrieving information about audio features of Spotify tracks.
@@ -58,7 +56,7 @@ public class AudioFeaturesService {
                 spotifyService.api.getAudioFeaturesForSeveralTracks(ids).build();
         try {
             List<AudioFeatures> features = List.of(getAudioFeaturesRequest.execute());
-            return features.stream().map(audioFeaturesDTOMapper).collect(Collectors.toList());
+            return features.stream().map(audioFeaturesDTOMapper).toList();
         } catch (IOException | SpotifyWebApiException | ParseException e) {
             throw new RuntimeException(e);
         }

@@ -11,7 +11,6 @@ import se.michaelthelin.spotify.requests.data.tracks.GetTrackRequest;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * A service class that provides methods for retrieving information about Spotify tracks.
@@ -54,7 +53,7 @@ public class TrackService {
         GetSeveralTracksRequest getSeveralTracksRequest = spotifyService.api.getSeveralTracks(ids).build();
         try {
             List<Track> tracks = List.of(getSeveralTracksRequest.execute());
-            return tracks.stream().map(trackDTOMapper).collect(Collectors.toList());
+            return tracks.stream().map(trackDTOMapper).toList();
         } catch (IOException | SpotifyWebApiException | ParseException e) {
             throw new RuntimeException(e);
         }

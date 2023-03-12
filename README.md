@@ -4,8 +4,6 @@ Music Streaming Aggregator is a work in progress web application that allows use
 
 # Table of Contents
 
-- [Music Streaming Aggregator](#music-streaming-aggregator)
-- [Table of Contents](#table-of-contents)
 - [Features](#features)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
