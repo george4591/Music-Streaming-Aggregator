@@ -1,9 +1,10 @@
 package com.musicaggregator.spotify.track;
 
+import com.musicaggregator.spotify.SpotifyService;
 import com.musicaggregator.spotify.artist.ArtistDTO;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
@@ -12,13 +13,20 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class TrackControllerTest {
-    @InjectMocks
-    private TrackController trackController;
+    private final SpotifyService spotifyService = new SpotifyService();
+    private final TrackDTOMapper trackDTOMapper = new TrackDTOMapper();
+    private TrackService trackService;
+
+
+    @BeforeEach
+    void setUp() {
+        trackService = new TrackService(spotifyService, trackDTOMapper);
+    }
 
     @Test
     void getTrack_withInvalidId_shouldReturnNull() {
         String id = "1234";
-        TrackDTO track = trackController.getTrack(id);
+        TrackDTO track = trackService.getTrack(id);
 
         assertNull(track);
     }
@@ -37,7 +45,7 @@ class TrackControllerTest {
 
         TrackDTO expected = new TrackDTO(id, "https://api.spotify.com/v1/tracks/1Ezn3sh9v9mhhyLYaIGHWC",
                                          "Blow Your Mind", artists, "spotify:track:1Ezn3sh9v9mhhyLYaIGHWC", 34, 219742);
-        TrackDTO actual = trackController.getTrack(id);
+        TrackDTO actual = trackService.getTrack(id);
 
         assertNotNull(actual);
         assertEquals(expected, actual);

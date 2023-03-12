@@ -21,7 +21,7 @@ Music Streaming Aggregator is a work in progress web application that allows use
 
 ## Prerequisites
 
-- Java 11 or higher
+- Java 19
 - Node.js 14 or higher
 - NPM
 
