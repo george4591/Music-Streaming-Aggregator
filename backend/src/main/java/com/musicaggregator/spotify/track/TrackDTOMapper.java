@@ -1,6 +1,6 @@
 package com.musicaggregator.spotify.track;
 
-import com.musicaggregator.spotify.artist.ArtistDTO;
+import com.musicaggregator.spotify.artist.ArtistSimplifiedDTOMapper;
 import org.springframework.stereotype.Service;
 import se.michaelthelin.spotify.model_objects.specification.Track;
 
@@ -12,6 +12,8 @@ import java.util.function.Function;
  */
 @Service
 public class TrackDTOMapper implements Function<Track, TrackDTO> {
+
+    private final ArtistSimplifiedDTOMapper artistDTOMapper = new ArtistSimplifiedDTOMapper();
     /**
      * Converts a Track object to a TrackDTO object.
      *
@@ -34,11 +36,7 @@ public class TrackDTOMapper implements Function<Track, TrackDTO> {
                 track.getHref(),
                 track.getName(),
                 Arrays.stream(track.getArtists())
-                      .map(artist -> new ArtistDTO(
-                              artist.getName(),
-                              artist.getId(),
-                              artist.getHref(),
-                              artist.getUri()))
+                      .map(artistDTOMapper)
                       .toList(),
                 track.getUri(),
                 track.getPopularity(),
